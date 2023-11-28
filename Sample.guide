@@ -1,0 +1,103 @@
+@database Sample.guide
+@author "David N. Junod"
+@(c) "Copyright © 1992 Commodore-Amiga, Inc."
+@$VER: Sample.guide 39.1 (11/04/92)
+@font helvetica.font 15
+@wordwrap
+
+@node Main "Sample AmigaGuide document"
+
+The following list shows the commands that can be used in @{b}AmigaGuide@{ub}.  The @{fg highlight}highlighted@{fg text} commands are new for the 3.0 version of @{b}AmigaGuide@{ub}.
+
+@{b} @database <name> @{ub}
+This command must always be the very first line of the @{b}AmigaGuide@{ub} database.
+
+@{b}@{fg highlight} @author <name> @{ub}@{fg text}
+Specify the author of the database.
+
+@{b}@{fg highlight} @(c) <copyright> @{ub}@{fg text}
+The copyright notice for the database.
+
+@{b}@{fg highlight} @$VER: <AmigaDOS version string> @{ub}@{fg text}
+Used to specify the version of the database.  This command must always be in upper-case.
+
+@{b} @master <name> @{ub}
+Used to specify the source file for the database.
+
+@{b}@{fg highlight} @font <name> <size> @{ub}@{fg text}
+Specify the font to use for a database.
+
+@{b} @index <name/node> @{ub}
+Specify the name of the index node, accessed by the @{"  Index  " beep 0} button.  Can be a node in an external database.
+
+@{b} @help <name/node> @{ub}
+Specify the name of the help node, accessed by the @{"  Help  " beep 0} button or the help key on the keyboard.  Can be a node in an external database.
+
+@{b}@{fg highlight} @wordwrap @{ub}@{fg text}
+Turn wordwrap on for the database.
+
+@{b} @node <name> [title] @{ub}
+Start a node.
+
+@{b} @dnode <name> [title] @{ub}
+Start a dynamic node.  The dynamic node hosts are queried for the node data.
+
+@{b} @remark <remark> @{ub}
+Remark (not displayed to the user).
+
+The following commands can be used within a node.
+
+@{b} @title <title> @{ub}
+The title for the node.
+
+@{b} @toc <name> @{ub}
+Specify the name of the Contents node for this node.  Can be a node in an external database.
+
+@{b} @prev <name> @{ub}
+Specify the name of node to go to when the @{" Browse < " beep 0} button is pressed.
+
+@{b} @next <name> @{ub}
+Specify the name of node to go to when the @{" Browse > " beep 0}  button is pressed.
+
+@{b}@{fg highlight} @keywords <keywords> @{ub}@{fg text}
+Keywords assigned to a node.  Used when searching for a node.
+
+@{b}@{fg highlight} @font <name> <size> @{ub}@{fg text}
+Specify the font to use within the node.
+
+@{b} \@{<label> <command>} @{ub}
+Indicate a textual link point.  Can be anywhere in a line.  This is displayed as a button within the text.
+
+Starting with 3.0 @{b}AmigaGuide@{ub}, buttons can also link to graphics, sounds and other datatypes.  See @{"Amiga" link amiga.brush/main}.
+
+@{b} @endnode @{ub}
+End a node.
+
+The following list of attributes can be applied to the text.  This feature is only supported with the 3.0 version of @{b}AmigaGuide@{ub}.
+
+ \@{b}		Turns @{b}bold@{ub} on.
+ \@{ub}		Turns @{b}bold@{ub} off.
+
+ \@{i}		Turns @{i}italic@{ui} on.
+ \@{ui}		Turns @{i}italic@{ui} off.
+
+ \@{u}		Turns @{u}underline@{uu} on.
+ \@{uu}		Turns @{u}underline@{uu} off.
+
+The foreground, or text, color can be changed using the \@{fg <color>} command.  The background color can be changed using the \@{bg <color>} command.  <color> can be:
+
+  @{fg text}text@{fg text}
+  @{fg shine}shine@{fg text}
+  @{fg shadow}shadow@{fg text}
+  @{fg fill}fill@{fg text}
+  @{fg filltext}filltext@{fg text}
+  @{fg back}@{bg text}background@{fg text}@{bg back}
+  @{fg highlight}highlight@{fg text}
+
+Commands can be displayed as normal text, by preceeding the @ sign with a backslash.  For example:
+
+  \\@{"Fake" link Main}
+
+would show up as normal text within the database.
+
+@endnode
