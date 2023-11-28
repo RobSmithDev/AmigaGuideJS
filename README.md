@@ -1,4 +1,4 @@
-# amigaguidejs
+# AmigaGuideJS
 A simple online viewer for Amiga Guide files, written entirely in Javascript
 
 created by RobSmithDev    https://robsmithdev.co.uk
@@ -9,15 +9,17 @@ Source code is available multi-licensed under the terms of:
 
 Please support this project by supporting https://retro.directory
 
-Usage:
+# Usage: 
+	<link rel="stylesheet" type="text/css" href="amigaguide.css">
+	<script src="amigaguide.js"></script>
 
-<link rel="stylesheet" type="text/css" href="amigaguide.css">
-<script src="amigaguide.js"></script>
+	let guide = new AmigaGuideViewer(url, element, os13mode);
 
-let guide = new AmigaGuideViewer(url, element, os13mode);
 where
-	url: URL where the AmigaGuide file is located
-	element: Name (id) of a HTML DIV (or the DIV element) in which to place the AmigaGuide doc
-	os13mode: true/false to toggle between Workbench 1.3/2.0 colour scheme and stylesheet
+> **url:** URL where the AmigaGuide file is located
+> 
+> **element:** Name (id) of a HTML DIV (or the DIV element) in which to place the AmigaGuide doc
+> 
+> **os13mode:** true/false to toggle between Workbench 1.3/2.0 colour scheme and stylesheet
 	
 	
