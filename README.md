@@ -3,7 +3,7 @@ A simple online viewer for Amiga Guide files, written entirely in Javascript
 
 created by RobSmithDev    https://robsmithdev.co.uk
 
-Try the [Live Demo](https://htmlpreview.github.io/?https://github.com/RobSmithDev/AmigaGuideJS/blob/main/index.html)
+Try the [Live Demo](https://htmlpreview.github.io/?https://github.com/RobSmithDev/AmigaGuideJS/blob/main/index.html) (doesn't always work unless dev-tools are open!?)
     
 Source code is available multi-licensed under the terms of:
         The Mozilla Public License Version 2.0as published by Mozilla Corporation
