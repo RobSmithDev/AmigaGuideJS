@@ -32,7 +32,7 @@
 		<br>This javascript class can be used directly in your website (see <a href="https://github.com/RobSmithDev/amigaguidejs">GitHub</a>), or used to browse documents here.<br><br>
 		
 		
-		<b>AmigaGuide URL: <input type="url" name="url" id="url" value="https://www.kyzer.me.uk/amos/docs/amcaf/AMCAF.Guide-ENGLISH"> <button id="go">View</button></b>
+		<b>AmigaGuide URL: <input type="url" name="url" id="url" value="https://www.kyzer.me.uk/amos/docs/amcaf/AMCAF.Guide-ENGLISH"> <button id="go" onclick="goView()">View</button></b>
 		<br><i>(this is using corsproxy.io to bypass cors)</i>
 		
 		
@@ -44,20 +44,15 @@
 		</div>
 
 		<script>
-
-			//  On page load
-			window.addEventListener("load", (event) => {   
-				document.getElementById('go').onclick = function() {
-					let url = document.getElementById('url').value+'';
-					if (url.length<5) alert("Please enter a valid URL"); else {
-						if (url.indexOf('://')==-1) url = 'https://'+url;
-						
-						// Parse the url through CORS proxy						
-						new AmigaGuideViewer('https://corsproxy.io/?'+encodeURIComponent(url), "targetBox", false);
-					}					
-				};				
-			});
-
+function goView() {
+	let url = document.getElementById('url').value+'';
+	if (url.length<5) alert("Please enter a valid URL"); else {
+		if (url.indexOf('://')==-1) url = 'https://'+url;
+		
+		// Parse the url through CORS proxy						
+		new AmigaGuideViewer('https://corsproxy.io/?'+encodeURIComponent(url), "targetBox", false);
+	}	
+}
 		</script>
 
 
