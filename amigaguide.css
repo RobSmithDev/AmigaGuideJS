@@ -1,18 +1,23 @@
 
-body {
-	background-color: #888;
-}
-
 @font-face {
     font-family: 'AmigaGuide-Topaz'; 
     src: url('topaz.ttf'); 
 }
 
+.amigaguide_container, .amigaguide_container *, .amigaguide_container > * {
+	text-align: left;
+	font-family: 'AmigaGuide-Topaz';
+	font-size: 16pt;
+}
+
+.amigaguide_container .errormessage {
+	color: #FF0000;
+	font-weight: bold;
+}
+
 .amigaguide_container {
 	width: 100%;
-	font-size: 16pt;
 	height: calc(100vh - 1em);
-	font-family: 'AmigaGuide-Topaz';
 	border: 0.1em solid;
 }
 

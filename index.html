@@ -3,15 +3,59 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="amigaguide.css">
 		<script src="amigaguide.js"></script>
+		<style>
+		
+			body {
+				background-color: #888;
+				color: #FFF;
+			}
+
+			.main {
+				text-align: center;
+				font-family: arial;
+			}
+			
+			#url {
+				width: 300px;
+			}
+			
+			#go {
+				cursor: pointer;
+			}
+		</style>
 	</head>
 
 	<body>
+		<div id="targetBox" class="main">
+		<h3>Welcome to AmigaGuideJS.</h3>
+		A simple online viewer for Amiga Guide files, written entirely in Javascript created by <a href="https://robsmithdev.co.uk">RobSmithDev</a>.
+		<br>This javascript class can be used directly in your website (see <a href="https://github.com/RobSmithDev/amigaguidejs">GitHub</a>), or used to browse documents here.<br><br>
+		
+		
+		<b>AmigaGuide URL: <input type="url" name="url" id="url" value="https://www.kyzer.me.uk/amos/docs/amcaf/AMCAF.Guide-ENGLISH"> <button id="go">View</button></b>
+		<br><i>(this is using corsproxy.io to bypass cors)</i>
+		
+		
+		<br><br><br>Available from <a href="https://github.com/RobSmithDev/amigaguidejs">GitHub</a> under the
+		<a href="https://www.mozilla.org/en-US/MPL/2.0/" target="_blank">MPL V2</a> or <a href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html" target="_blank">GNU V2+</a> licence.
+		<br><br>Support this project by supporting <a href="https://retro.directory" target="_blank">retro.directory</a>
+		<br><br><a href="https://retro.directory" style="padding: 1em" target="_blank"><img src="//retro.directory/images/b191x98.png" width="191" height="98" alt="Listed in the retro.directory, take a look"></a>
+		
+		</div>
 
 		<script>
 
 			//  On page load
 			window.addEventListener("load", (event) => {   
-				let guide = new AmigaGuideViewer("amcaf.guide", "container", false);
+				document.getElementById('go').onclick = function() {
+					let url = document.getElementById('url').value+'';
+					if (url.length<5) alert("Please enter a valid URL"); else {
+						if (url.indexOf('://')==-1) url = 'https://'+url;
+						
+						// Parse the url through CORS proxy						
+						new AmigaGuideViewer('https://corsproxy.io/?'+encodeURIComponent(url), "targetBox", false);
+					}					
+				};				
 			});
 
 		</script>

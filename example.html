@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="amigaguide.css">
+		<script src="amigaguide.js"></script>
+	</head>
+
+	<body>
+
+		<script>
+
+			//  On page load
+			window.addEventListener("load", (event) => {   
+				let guide = new AmigaGuideViewer("amigaguide.guide", "container", false);
+			});
+
+		</script>
+
+
+		<div id="container">
+		</div>
+
+	</body>
+</html>

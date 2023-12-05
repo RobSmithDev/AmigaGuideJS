@@ -12,7 +12,9 @@ class AmigaGuideViewer {
 	// Create instance of Amiga Guide Viewer
 	constructor(fileUrl, targetDiv, kickstart_13_Style = false, forceWordwrap = false) {
 		if (typeof targetDiv === 'string') targetDiv = document.getElementById(targetDiv);
+		if (targetDiv === null) throw new Error('targetDiv not found');
 		if (typeof targetDiv !== 'object') throw new Error('targetDiv is invalid');
+		targetDiv.innerHTML = '';
 		
 		// Boot strap the container
 		targetDiv.classList.add('amigaguide_container');
@@ -20,7 +22,8 @@ class AmigaGuideViewer {
 		window._AmigaGuideViewers = window._AmigaGuideViewers || [];
 		
 		// Heading bar
-		this.filename = fileUrl.substring(fileUrl.lastIndexOf('/')+1);
+		let tmp = decodeURIComponent(fileUrl);
+		this.filename = tmp.substring(tmp.lastIndexOf('/')+1);
 		this.header = document.createElement('header');
 		this.header.classList.add('amigaguide_titlebar');
 		targetDiv.appendChild(this.header);		
@@ -99,8 +102,9 @@ class AmigaGuideViewer {
 		this.tokens = [ '\\@', '@database','@author','@(c)','@$VER','@master','@font','@index','@help','@wordwrap','@node','@dnode','@remark','@title','@toc','@prev','@next','@keywords','@{','@endnode' ];
 		
 		// Trigger download
-		fetch(fileUrl, { method: 'GET', mode: 'no-cors', redirect: 'follow', referrerPolicy: 'no-referrer'}).then( (response) => {
+		fetch(fileUrl, { method: 'GET', redirect: 'follow', referrerPolicy: 'no-referrer'}).then( (response) => {
 			if (!response.ok) {
+				console.log(response);
 				throw new Error(`HTTP error reading AmigaGuide file: ${response.status}`);
 			}
 			return response.arrayBuffer();
@@ -110,7 +114,7 @@ class AmigaGuideViewer {
 			this.parseFile(decoder.decode(data));
 		}).catch((error) => {
 			console.log('Error loading '+fileUrl.substring(fileUrl.lastIndexOf('/')+1)+', '+error);
-			this.contentBox.innerHTML = 'Error loading '+fileUrl.substring(fileUrl.lastIndexOf('/')+1)+', '+error;
+			this.contentBox.innerHTML = '<span class="errormessage">Error loading '+fileUrl.substring(fileUrl.lastIndexOf('/')+1)+', '+error+'</span>';
 		});		
 	}
 	
